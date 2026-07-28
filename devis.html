@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devis — Tia Diarra</title>
+  <style>
+    :root {
+      --rose-profond: #d6336c;
+      --rose-vif: #ff6f9c;
+      --rose-clair: #ffc2d6;
+      --rose-pale: #fff2f6;
+      --encre: #3a1526;
+      --blanc: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, var(--rose-pale), var(--rose-clair));
+      color: var(--encre);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+    }
+
+    .card {
+      background: var(--blanc);
+      width: 100%;
+      max-width: 560px;
+      padding: 32px;
+      border-radius: 24px;
+      box-shadow: 0 18px 40px rgba(58, 21, 38, 0.15);
+    }
+
+    h1 {
+      color: var(--rose-profond);
+      margin-bottom: 8px;
+      font-size: 1.8rem;
+    }
+
+    .subtitle {
+      margin-bottom: 24px;
+      color: #6f4b5d;
+      line-height: 1.6;
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    label {
+      font-weight: 600;
+      color: var(--encre);
+    }
+
+    input {
+      padding: 12px 14px;
+      border: 1px solid #e8c7d4;
+      border-radius: 12px;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    input:focus {
+      border-color: var(--rose-vif);
+      box-shadow: 0 0 0 3px rgba(255, 111, 156, 0.18);
+    }
+
+    button {
+      margin-top: 8px;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--rose-profond), var(--rose-vif));
+      color: var(--blanc);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.95;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Demande de devis</h1>
+    <p class="subtitle">Remplissez ce formulaire pour me contacter et recevoir un devis personnalisé.</p>
+
+    <form>
+      <div class="field">
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="nom" placeholder="Entrez votre nom">
+      </div>
+
+      <div class="field">
+        <label for="prenom">Prénom</label>
+        <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom">
+      </div>
+
+      <div class="field">
+        <label for="mail">Mail</label>
+        <input type="email" id="mail" name="mail" placeholder="votre@email.com">
+      </div>
+
+      <div class="field">
+        <label for="pseudo">Pseudo</label>
+        <input type="text" id="pseudo" name="pseudo" placeholder="Entrez votre pseudo">
+      </div>
+
+      <div class="field">
+        <label for="projet">Projet</label>
+        <input type="text" id="projet" name="projet" placeholder="Décrivez votre projet">
+      </div>
+
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
+</body>
+</html>

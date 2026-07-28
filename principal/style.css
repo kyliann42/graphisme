@@ -1,0 +1,306 @@
+/* ==========================================================================
+   Tia Diarra — Portfolio graphiste
+   Palette : dégradé rose (du bas, plus soutenu, vers le haut, plus pâle)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  --rose-profond: #d6336c;
+  --rose-vif:     #ff6f9c;
+  --rose-clair:   #ffc2d6;
+  --rose-pale:    #fff2f6;
+  --encre:        #3a1526;
+  --blanc:        #ffffff;
+
+  --font-logo: 'Fraunces', serif;
+  --font-nav:  'Poppins', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-nav);
+  color: var(--encre);
+  min-height: 100vh;
+  /* Dégradé rose du bas (soutenu) vers le haut (pâle) */
+  background: linear-gradient(
+    to top,
+    var(--rose-profond) 0%,
+    var(--rose-vif) 25%,
+    var(--rose-clair) 60%,
+    var(--rose-pale) 100%
+  );
+  background-attachment: fixed;
+}
+
+/* ==========================================================================
+   Header / Navigation
+   ========================================================================== */
+
+#navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 2.5rem;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(214, 51, 108, 0.15);
+}
+
+#navbar .logo {
+  text-decoration: none;
+}
+
+#navbar .logo span {
+  font-family: var(--font-logo);
+  font-weight: 600;
+  font-size: 1.6rem;
+  letter-spacing: 0.5px;
+  color: var(--rose-profond);
+  font-style: italic;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  list-style: none;
+}
+
+.nav-links > li {
+  position: relative;
+}
+
+.nav-links a,
+.dropdown-toggle {
+  position: relative;
+  text-decoration: none;
+  color: var(--encre);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+  padding-bottom: 4px;
+  transition: color 0.25s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.nav-links a::after,
+.dropdown-toggle::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--rose-profond), var(--rose-vif));
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible,
+.dropdown-toggle:hover,
+.dropdown-toggle:focus-visible {
+  color: var(--rose-profond);
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after,
+.dropdown-toggle:hover::after,
+.dropdown-toggle:focus-visible::after {
+  width: 100%;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.7rem);
+  left: 0;
+  min-width: 215px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.75rem;
+  list-style: none;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(214, 51, 108, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(58, 21, 38, 0.12);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: all 0.25s ease;
+}
+
+.dropdown-menu.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.55rem 0.7rem;
+  border-radius: 10px;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a:focus-visible {
+  background: var(--rose-pale);
+  color: var(--rose-profond);
+}
+
+.page-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.hero-card {
+  padding: 2rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(214, 51, 108, 0.15);
+  box-shadow: 0 18px 40px rgba(58, 21, 38, 0.12);
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.8rem;
+  color: var(--rose-profond);
+  font-weight: 600;
+}
+
+.hero-card h1 {
+  font-family: var(--font-logo);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  margin-bottom: 0.6rem;
+}
+
+.hero-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   Bouton menu mobile (hamburger)
+   ========================================================================== */
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 19px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--rose-profond);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle.active span:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.active span:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.5rem 0 2rem;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(214, 51, 108, 0.15);
+
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .dropdown-menu {
+    position: static;
+    min-width: unset;
+    width: 100%;
+    padding: 0.35rem 0 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    display: none;
+  }
+
+  .dropdown-menu.open {
+    display: flex;
+  }
+
+  .has-dropdown {
+    width: 100%;
+    text-align: center;
+  }
+
+  .dropdown-toggle {
+    width: 100%;
+    padding-bottom: 0.4rem;
+  }
+}
+
+/* Respect des préférences de mouvement réduit */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
